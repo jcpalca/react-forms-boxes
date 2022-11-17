@@ -1,4 +1,5 @@
-import {useState} from "react";
+import { useState } from "react";
+
 
 function NewBoxForm({addBox}) {
   const [formData, setFormData] = useState({
@@ -18,7 +19,7 @@ function NewBoxForm({addBox}) {
   function handleSubmit(evt) {
     evt.preventDefault();
     addBox(formData);
-    setFormData({ height: "", width: "", backgroundColor: ""});
+    setFormData({ height: "", width: "", backgroundColor: "" });
   }
 
   return (

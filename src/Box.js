@@ -1,12 +1,19 @@
-function Box({id, width, height, backgroundColor}) {
+function Box({id, width, height, backgroundColor, removeBox}) {
   const myStyles = {
     height: `${height}em`,
     width: `${width}em`,
     backgroundColor: backgroundColor
   }
 
+  function removeThisBox() {
+    removeBox(id);
+  }
+
   return (
-    <div key={id} id={id} className="Box" style={myStyles}></div>
+    <div className="Box">
+      <div key={id} id={id} className="Box-actual" style={myStyles}></div>
+      <button onClick={removeThisBox}>X</button>
+    </div>
   )
 
 }

@@ -1,12 +1,18 @@
 import Box from "./Box.js";
 import NewBoxForm from "./NewBoxForm.js";
-import {useState} from "react";
+import { useState } from "react";
+import { v4 as uuid } from 'uuid';
 
 function BoxList() {
   const [boxes, setBoxes] = useState([]);
 
-  function addBox(newBox) {
+  function addBox(box) {
+    let newBox = {...box, id: uuid()}
     setBoxes(boxes => [...boxes, newBox]);
+  }
+
+  function removeBox(id) {
+   setBoxes(boxes=> boxes.filter(box => box.id !== id ))
   }
 
   return (
@@ -19,6 +25,7 @@ function BoxList() {
           width={width}
           height={height}
           backgroundColor={backgroundColor}
+          removeBox={removeBox}
         />
       ))}
     </div>
